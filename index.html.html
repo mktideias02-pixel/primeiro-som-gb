@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Escolha seu caminho para aprender guitarra, baixo ou os dois instrumentos do zero com materiais visuais, práticos e progressivos.">
+  <title>Primeiro Som — Escolha seu instrumento</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&family=Inter+Tight:wght@700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #080605;
+      --bg-soft: #120c09;
+      --card: rgba(24,16,12,.82);
+      --card-strong: #18100c;
+      --ink: #fff8ef;
+      --ink-soft: #e9d8c7;
+      --muted: #ad9686;
+      --line: rgba(255,238,220,.12);
+      --amber: #ff9a2f;
+      --orange: #ef5d22;
+      --red: #c8271d;
+      --wine: #671710;
+      --yellow: #ffd166;
+      --green: #6ee7a8;
+      --radius: 22px;
+      --shadow: 0 24px 70px rgba(0,0,0,.42);
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 4%, rgba(255,145,31,.18), transparent 24%),
+        radial-gradient(circle at 88% 18%, rgba(200,39,29,.20), transparent 26%),
+        radial-gradient(circle at 50% 100%, rgba(239,93,34,.10), transparent 32%),
+        linear-gradient(145deg, #080605 0%, #110906 44%, #090706 100%);
+      font-family: "Inter", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.62;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .15;
+      background-image:
+        linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: linear-gradient(to bottom, #000, transparent 75%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .container { width: min(calc(100% - 30px), var(--max)); margin: 0 auto; }
+    .icon { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+    .topbar {
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      background: linear-gradient(90deg, #321008, #7d2014 45%, #361008);
+    }
+    .topbar .container {
+      min-height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    .pulse {
+      width: 8px; height: 8px; border-radius: 999px;
+      background: var(--yellow);
+      box-shadow: 0 0 0 0 rgba(255,209,102,.45);
+      animation: pulse 1.8s infinite;
+    }
+    @keyframes pulse { 70% { box-shadow: 0 0 0 9px rgba(255,209,102,0); } }
+
+    .header {
+      position: sticky; top: 0; z-index: 60;
+      background: rgba(10,7,6,.84);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(16px);
+    }
+    .nav {
+      min-height: 74px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font: 900 18px/1 "Inter Tight"; text-transform: uppercase; }
+    .brand-mark {
+      width: 40px; height: 40px; display: grid; place-items: center;
+      border-radius: 13px;
+      background: linear-gradient(135deg, var(--amber), var(--red));
+      color: #160905;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.18), 0 10px 30px rgba(200,39,29,.2);
+    }
+    
+    .button {
+      min-height: 49px; padding: 0 19px;
+      display: inline-flex; justify-content: center; align-items: center; gap: 9px;
+      border: 1px solid transparent; border-radius: 14px;
+      color: #1b0904;
+      background: linear-gradient(135deg, var(--yellow), var(--orange));
+      box-shadow: 0 13px 34px rgba(239,93,34,.22);
+      font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: .04em;
+      cursor: pointer; transition: transform .12s ease, filter .18s ease, box-shadow .18s ease;
+    }
+    .button:hover { filter: brightness(1.05); box-shadow: 0 16px 42px rgba(239,93,34,.3); }
+    .button:active { transform: scale(.98); }
+    .button.outline { color: #fff; background: rgba(255,255,255,.03); border-color: var(--line); box-shadow: none; }
+    .button.dark { color: #fff; background: #0d0806; border-color: rgba(255,255,255,.09); box-shadow: none; }
+
+    .tab-marquee {
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(90deg, rgba(255,139,39,.10), rgba(200,39,29,.08), rgba(255,139,39,.10));
+    }
+    .tab-track {
+      width: max-content;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      animation: tabMove 20s linear infinite;
+      color: #ffb174;
+      font: 700 10px/1.18 "Courier New", monospace;
+      white-space: pre;
+      text-shadow: 0 0 18px rgba(255,126,49,.22);
+    }
+    .tab-track span { display: block; }
+    @keyframes tabMove { to { transform: translateX(-50%); } }
+    .tab-marquee::before, .tab-marquee::after {
+      content:""; position:absolute; top:0; bottom:0; width:100px; z-index:2; pointer-events:none;
+    }
+    .tab-marquee::before { left:0; background:linear-gradient(90deg, #0d0806, transparent); }
+    .tab-marquee::after { right:0; background:linear-gradient(-90deg, #0d0806, transparent); }
+
+    .hero { padding: 46px 0 34px; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      align-items: stretch;
+    }
+    .hero-copy, .hero-panel {
+      min-height: 510px;
+      height: 100%;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .hero-copy {
+      position: relative;
+      padding: clamp(28px, 5vw, 54px);
+      display: flex; flex-direction: column; justify-content: space-between;
+      background:
+        linear-gradient(135deg, rgba(255,154,47,.11), transparent 34%),
+        linear-gradient(160deg, #17100d 0%, #0b0807 72%);
+    }
+    .hero-copy::after {
+      content:""; position:absolute; width:360px; height:360px; border-radius:50%;
+      right:-150px; bottom:-165px;
+      background: radial-gradient(circle, rgba(255,105,32,.28), transparent 68%);
+      filter: blur(4px);
+    }
+    .eyebrow { margin: 0 0 13px; color: #ffad63; font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: .09em; }
+    h1, h2, h3 { font-family: "Inter Tight", sans-serif; }
+    .hero h1 {
+      max-width: 680px;
+      margin: 0;
+      font-size: clamp(46px, 5.65vw, 74px);
+      line-height: .98;
+      font-weight: 900;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      text-wrap: balance;
+    }
+    .hero h1 span { display:block; color:#ff8d36; }
+    .hero-copy p { max-width: 680px; margin: 24px 0 0; color: var(--ink-soft); font-size: clamp(15px, 1.7vw, 18px); }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:30px; position:relative; z-index:2; }
+    .trust { display:flex; flex-wrap:wrap; gap:10px 20px; margin-top:23px; color:#bca89a; font-size:10px; font-weight:900; text-transform:uppercase; letter-spacing:.045em; }
+    .trust span { display:inline-flex; gap:7px; align-items:center; }
+
+    .hero-panel {
+      position: relative;
+      padding: 20px;
+      background:
+        radial-gradient(circle at 20% 15%, rgba(255,154,47,.18), transparent 28%),
+        radial-gradient(circle at 84% 82%, rgba(200,39,29,.20), transparent 30%),
+        linear-gradient(150deg, #160d09, #090706 70%);
+    }
+    .performance-stage {
+      position: relative;
+      height: 100%;
+      min-height: 470px;
+      padding: 24px;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 18px;
+      overflow: hidden;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.09);
+      background:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(145deg, rgba(255,111,36,.10), rgba(84,14,10,.22)),
+        #0b0807;
+      background-size: 24px 24px, 24px 24px, auto, auto;
+    }
+    .performance-stage::before {
+      content: "";
+      position: absolute;
+      inset: -40% -20%;
+      background: linear-gradient(105deg, transparent 35%, rgba(255,173,99,.12) 49%, transparent 62%);
+      animation: stageSweep 5.8s linear infinite;
+      pointer-events: none;
+    }
+    @keyframes stageSweep { from { transform: translateX(-35%); } to { transform: translateX(35%); } }
+    .performance-head { position:relative; z-index:2; }
+    .performance-head small { display:block; color:#ffb174; font-size:11px; font-weight:900; text-transform:uppercase; letter-spacing:.09em; }
+    .performance-head h2 { margin:10px 0 0; max-width:480px; font-size:clamp(34px,3.8vw,50px); line-height:1.02; letter-spacing:0; text-transform:uppercase; }
+    .performance-head p { margin:12px 0 0; max-width:500px; color:#d4c0b2; font-size:15px; line-height:1.65; }
+    .performance-grid { position:relative; z-index:2; display:grid; grid-template-columns:1fr 1fr; gap:12px; min-height:0; }
+    .performance-shot {
+      position:relative; overflow:hidden; min-height:255px; padding:18px;
+      display:flex; flex-direction:column; justify-content:space-between;
+      border-radius:18px; border:1px solid rgba(255,255,255,.11);
+      background:linear-gradient(160deg, rgba(255,138,45,.16), rgba(12,8,7,.96) 66%);
+      box-shadow:inset 0 0 40px rgba(0,0,0,.28);
+    }
+    .performance-shot.bass { background:linear-gradient(160deg, rgba(200,39,29,.20), rgba(12,8,7,.96) 66%); }
+    .performance-shot::after { content:""; position:absolute; inset:0; background:radial-gradient(circle at 50% 80%, rgba(255,96,32,.28), transparent 48%); opacity:.7; pointer-events:none; }
+    .performance-label { position:relative; z-index:3; display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    .live-chip { display:inline-flex; align-items:center; gap:7px; padding:6px 8px; border-radius:999px; background:rgba(7,5,4,.72); color:#fff; font-size:9px; font-weight:900; text-transform:uppercase; letter-spacing:.07em; }
+    .live-chip i { width:7px; height:7px; border-radius:50%; background:#ff6a32; box-shadow:0 0 0 0 rgba(255,106,50,.5); animation:pulse 1.8s infinite; }
+    .play-ring { width:34px; height:34px; display:grid; place-items:center; border-radius:50%; color:#1b0904; background:linear-gradient(135deg,var(--yellow),var(--orange)); box-shadow:0 10px 25px rgba(239,93,34,.25); }
+    .instrument-visual { position:absolute; inset:62px 16px 96px; z-index:1; display:grid; place-items:center; color:#fff5ea; opacity:.62; transform:rotate(-7deg) scale(.82); pointer-events:none; }
+    .performance-shot.bass .instrument-visual { transform:rotate(7deg) scale(.82); }
+    .instrument-visual svg { width:84%; height:84%; filter:drop-shadow(0 14px 22px rgba(0,0,0,.45)); }
+    .performance-copy { position:relative; z-index:3; }
+    .performance-copy strong { display:block; font:900 22px/1.05 "Inter Tight"; text-transform:uppercase; }
+    .performance-copy span { display:block; margin-top:7px; color:#d8c4b6; font-size:13px; line-height:1.45; }
+    .mini-bars { display:flex; align-items:end; gap:3px; height:18px; }
+    .mini-bars b { width:3px; border-radius:999px; background:#ff8e3b; animation:barDance .9s ease-in-out infinite alternate; }
+    .mini-bars b:nth-child(1){height:7px}.mini-bars b:nth-child(2){height:15px;animation-delay:.12s}.mini-bars b:nth-child(3){height:10px;animation-delay:.24s}.mini-bars b:nth-child(4){height:17px;animation-delay:.36s}.mini-bars b:nth-child(5){height:9px;animation-delay:.48s}
+    @keyframes barDance { to { transform:scaleY(.45); opacity:.55; } }
+
+    .section { padding: 104px 0; }
+    .section + .section { border-top: 1px solid rgba(255,238,220,.055); }
+    .section-head { display:grid; grid-template-columns:1fr minmax(320px,.52fr); gap:44px; align-items:end; margin-bottom:42px; }
+    .section-head h2 { margin:0; font-size:clamp(36px,5vw,61px); line-height:.98; letter-spacing:-.02em; text-transform:uppercase; }
+    .section-head p { margin:0; color:var(--ink-soft); font-size:16px; line-height:1.72; }
+
+    .feature-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    .feature-card {
+      min-height:0; padding:28px;
+      display:flex; flex-direction:column; justify-content:space-between;
+      border:1px solid var(--line); border-radius:var(--radius);
+      background:linear-gradient(180deg, rgba(255,255,255,.042), rgba(255,255,255,.015));
+      box-shadow:0 10px 28px rgba(0,0,0,.2);
+    }
+    .feature-card:nth-child(2) { background:linear-gradient(145deg, rgba(255,146,41,.20), rgba(116,26,16,.20)), #17100c; }
+    .feature-card:nth-child(3) { background:linear-gradient(145deg, rgba(200,39,29,.22), rgba(255,255,255,.015)), #130b09; }
+    .feature-icon { width:46px; height:46px; display:grid; place-items:center; border-radius:14px; color:#ffb369; background:rgba(255,154,47,.11); border:1px solid rgba(255,173,99,.18); }
+    .feature-card h3 { margin:28px 0 0; font-size:25px; line-height:1.12; }
+    .feature-card p { margin:14px 0 0; color:#d6c3b5; font-size:15px; line-height:1.68; }
+
+    .instrument-split { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .instrument-card {
+      min-height:330px; padding:30px; position:relative; overflow:hidden;
+      border-radius:26px; border:1px solid var(--line); box-shadow:var(--shadow);
+    }
+    .instrument-card.guitar { background:linear-gradient(135deg, rgba(255,154,47,.23), transparent 42%), linear-gradient(145deg,#21150d,#0d0907); }
+    .instrument-card.bass { background:linear-gradient(135deg, rgba(200,39,29,.28), transparent 44%), linear-gradient(145deg,#1c0e0b,#0c0807); }
+    .instrument-card::after {
+      content:""; position:absolute; width:260px; height:260px; right:-85px; bottom:-70px; border-radius:50%;
+      background:radial-gradient(circle, rgba(255,159,66,.28), transparent 66%);
+    }
+    .instrument-card.bass::after { background:radial-gradient(circle, rgba(204,42,29,.32), transparent 66%); }
+    .instrument-card .number { color:#ffad63; font-size:11px; font-weight:900; letter-spacing:.09em; text-transform:uppercase; }
+    .instrument-card h3 { position:relative; z-index:1; max-width:480px; margin:50px 0 15px; font-size:clamp(34px,4vw,55px); line-height:.96; text-transform:uppercase; }
+    .instrument-card p { position:relative; z-index:1; max-width:560px; margin:0; color:#decbbd; font-size:16px; line-height:1.72; }
+    .instrument-list { position:relative; z-index:1; display:grid; grid-template-columns:repeat(2,1fr); gap:8px 14px; margin-top:24px; color:#f1dfd2; font-size:14px; font-weight:800; }
+    .instrument-list span::before { content:""; display:inline-block; width:6px; height:6px; margin-right:8px; border-radius:50%; background:var(--orange); vertical-align:middle; }
+
+    .shop-wrap {
+      padding: 20px;
+      border:1px solid rgba(255,197,141,.16);
+      border-radius:30px;
+      background:
+        linear-gradient(135deg, rgba(255,154,47,.12), transparent 38%),
+        linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.014));
+      box-shadow:var(--shadow);
+    }
+    .shop-label { padding:8px 8px 22px; display:flex; justify-content:space-between; gap:20px; align-items:end; }
+    .shop-label h2 { margin:0; font-size:clamp(34px,4.6vw,56px); line-height:.98; letter-spacing:-.02em; text-transform:uppercase; }
+    .shop-label p { max-width:500px; margin:0; color:var(--ink-soft); font-size:16px; line-height:1.7; }
+    .product-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    .product-card {
+      min-height: 520px; padding:22px; position:relative; overflow:hidden;
+      display:flex; flex-direction:column;
+      border:1px solid var(--line); border-radius:22px;
+      background:#110b08;
+      transition:transform .15s ease, border-color .18s ease, box-shadow .18s ease;
+    }
+    .product-card:hover { transform:translateY(-4px); border-color:rgba(255,174,93,.32); box-shadow:0 22px 50px rgba(0,0,0,.3); }
+    .product-card.featured { background:linear-gradient(145deg, rgba(255,154,47,.18), rgba(200,39,29,.12)), #130b08; border-color:rgba(255,181,105,.34); }
+    .product-tag { align-self:flex-start; padding:7px 9px; border-radius:999px; color:#1b0803; background:#ffb15d; font-size:9px; font-weight:900; text-transform:uppercase; letter-spacing:.07em; }
+    .product-tag.alt { color:#ffd8ca; background:rgba(200,39,29,.20); border:1px solid rgba(255,103,72,.22); }
+    .product-card h3 { margin:22px 0 10px; font-size:clamp(29px,3.2vw,42px); line-height:.98; text-transform:uppercase; }
+    .product-card p { margin:0; color:#d2beb0; font-size:15px; line-height:1.65; }
+    .product-card ul { list-style:none; padding:0; margin:18px 0; display:grid; gap:8px; color:#e7d6ca; font-size:14px; font-weight:700; }
+    .product-card li::before { content:"+"; margin-right:9px; color:#ff9a42; font-weight:900; }
+    .product-bottom { margin-top:auto; }
+    .product-price { display:flex; align-items:end; gap:8px; margin-bottom:13px; }
+    .product-price strong { font:900 40px/1 "Inter Tight"; letter-spacing:-.03em; }
+    .product-price span { color:var(--muted); font-size:10px; font-weight:900; text-transform:uppercase; }
+    .product-card .button { width:100%; }
+
+    .release-note {
+      margin-top:18px; padding:24px;
+      display:grid; grid-template-columns:auto 1fr; gap:18px; align-items:start;
+      border-radius:20px; border:1px solid rgba(255,177,93,.22);
+      background:linear-gradient(90deg, rgba(255,154,47,.11), rgba(200,39,29,.07));
+    }
+    .release-icon { width:48px; height:48px; display:grid; place-items:center; border-radius:14px; color:#180803; background:linear-gradient(135deg,var(--yellow),var(--orange)); }
+    .release-note h3 { margin:0 0 7px; font-size:18px; }
+    .release-note p { margin:0; color:#dfcabc; font-size:15px; line-height:1.7; }
+    .release-note strong { color:#fff; }
+footer { margin-top:28px; padding:30px 0 90px; border-top:1px solid var(--line); color:#9e8a7d; background:#080605; font-size:11px; }
+    .footer-row { display:flex; justify-content:space-between; gap:30px; }
+    .footer-row strong { color:#fff; font:900 14px/1 "Inter Tight"; text-transform:uppercase; }
+
+
+    @media (prefers-reduced-motion: reduce) {
+      * { scroll-behavior:auto !important; animation-duration:.001ms !important; animation-iteration-count:1 !important; }
+    }
+    @media (max-width: 980px) {
+      .nav-links { display:none; }
+      .hero-grid, .section-head, .shop-label { grid-template-columns:1fr; }
+      .hero-copy, .hero-panel { min-height:auto; }
+      .performance-stage { min-height: 520px; }
+      .feature-grid { grid-template-columns:1fr; }
+      .instrument-split { grid-template-columns:1fr; }
+      .product-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+      .product-card { min-height: 520px; }
+    }
+    @media (max-width: 640px) {
+      .nav { display:flex; align-items:center; justify-content:space-between; gap:14px; }
+      .nav > .button { display:inline-flex; }
+      .brand { white-space:nowrap; }
+      .tab-track { height: 58px; font-size: 9px; gap: 38px; }
+      .tab-marquee::before, .tab-marquee::after { width: 42px; }
+      .hero { padding-top:28px; }
+      .hero-copy, .hero-panel { border-radius:22px; }
+      .hero-copy { padding:25px; min-height:500px; }
+      .hero h1 { font-size: clamp(42px, 13vw, 60px); line-height: 1; }
+      .hero-panel { padding:10px; }
+      .performance-stage { min-height: 650px; padding:20px; }
+      .performance-grid { grid-template-columns:1fr; }
+      .performance-shot { min-height:230px; }
+      .instrument-visual { inset:60px 18px 88px; }
+      .performance-head h2 { font-size: clamp(34px, 10vw, 48px); }
+      .hero-actions .button { width:100%; }
+      .instrument-list { grid-template-columns:1fr; }
+      .shop-wrap { padding:10px; }
+      .shop-label { padding:14px 10px 20px; }
+      .release-note { grid-template-columns:1fr; }
+      .footer-row { display:block; }
+      .footer-row > div + div { margin-top:14px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container"><span class="pulse"></span> Três caminhos. Um objetivo: fazer seu primeiro som.</div>
+  </div>
+
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="#inicio" aria-label="Primeiro Som">
+        <span class="brand-mark"><svg class="icon" viewBox="0 0 24 24"><path d="m13 2-8 12h6l-1 8 9-13h-6z"/></svg></span>
+        Primeiro Som
+      </a>
+      <span aria-hidden="true"></span>
+      <a class="button" href="#comprar">Escolher curso</a>
+    </div>
+  </header>
+
+  <div class="tab-marquee" aria-label="Tablatura animada">
+    <div class="tab-track" aria-hidden="true">
+      <span>e|----------------0---3---5---3---0----------------|
+B|----------1---3-------------------3---1----------|
+G|------0---------------------------------0--------|
+D|--2-----------------------------------------2----|</span>
+      <span>A|----------------0---2---3---2---0----------------|
+E|--0---0---3-------------------------3---0--------|
+   ↓   ↓   ↑   ↓   ↑   ↓   ↑   ↓   ↑   ↓</span>
+      <span>e|----------------0---3---5---3---0----------------|
+B|----------1---3-------------------3---1----------|
+G|------0---------------------------------0--------|
+D|--2-----------------------------------------2----|</span>
+      <span>A|----------------0---2---3---2---0----------------|
+E|--0---0---3-------------------------3---0--------|
+   ↓   ↓   ↑   ↓   ↑   ↓   ↑   ↓   ↑   ↓</span>
+    </div>
+  </div>
+
+  <main id="inicio">
+    <section class="hero">
+      <div class="container hero-grid">
+        <article class="hero-copy">
+          <div>
+            <p class="eyebrow">Aprendizado para iniciantes</p>
+            <h1>Seu instrumento. <span>Seu ritmo.</span> Seu primeiro som.</h1>
+            <p>Escolha aprender guitarra, baixo ou seguir uma formação conjunta. Materiais visuais, explicações diretas e prática guiada para quem quer começar sem se perder em teoria demais.</p>
+          </div>
+          <div>
+            <div class="hero-actions">
+              <a class="button" href="#comprar">Ver os três cursos <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></a>
+              <a class="button outline" href="#materiais">Conhecer o método</a>
+            </div>
+            <div class="trust">
+              <span><svg class="icon" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg> Compra pela Cakto</span>
+              <span><svg class="icon" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.2 2.8 8 7 10 4.2-2 7-5.8 7-10V6z"/><path d="m9 12 2 2 4-5"/></svg> Garantia de 7 dias</span>
+              <span><svg class="icon" viewBox="0 0 24 24"><path d="M4 18V6h16v12zM8 10h8M8 14h5"/></svg> Conteúdo visual e prático</span>
+            </div>
+          </div>
+        </article>
+
+        <aside class="hero-panel">
+          <div class="performance-stage">
+            <div class="performance-head">
+              <small>Veja o som ganhar forma</small>
+              <h2>Duas maneiras de entrar na música.</h2>
+              <p>Guitarra para criar impacto, riffs e acordes. Baixo para construir pulsação, peso e groove. Escolha a energia que mais combina com você.</p>
+            </div>
+            <div class="performance-grid">
+              <article class="performance-shot">
+                <div class="performance-label">
+                  <span class="live-chip"><i></i> Guitarra em ação</span>
+                  <span class="play-ring"><svg class="icon" viewBox="0 0 24 24"><path d="m9 6 9 6-9 6z"/></svg></span>
+                </div>
+                <div class="instrument-visual" aria-hidden="true">
+                  <svg viewBox="0 0 320 240" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M25 194c33-8 67-28 94-59l68-77 28 22-64 82c-22 29-25 50-11 63 17 16 44 4 60-18 17-24 44-30 72-9 19 15 27 31 20 42-9 14-39 6-58-2-18-7-31-4-39 10-16 26-45 36-75 22-20-9-29-26-27-48 2-19-8-25-25-18-23 9-51 11-68 3-13-6-13-17 0-13z"/>
+                    <path d="m184 61 35-43 36 30-39 41"/>
+                    <path d="m206 37 23 20M62 184l84-96M82 197l87-99M101 209l91-102"/>
+                    <circle cx="176" cy="173" r="9"/><circle cx="202" cy="191" r="7"/>
+                  </svg>
+                </div>
+                <div class="performance-copy"><strong>Riffs e acordes</strong><span>Expressão, energia e as primeiras músicas nas seis cordas.</span><div class="mini-bars"><b></b><b></b><b></b><b></b><b></b></div></div>
+              </article>
+              <article class="performance-shot bass">
+                <div class="performance-label">
+                  <span class="live-chip"><i></i> Baixo em ação</span>
+                  <span class="play-ring"><svg class="icon" viewBox="0 0 24 24"><path d="m9 6 9 6-9 6z"/></svg></span>
+                </div>
+                <div class="instrument-visual" aria-hidden="true">
+                  <svg viewBox="0 0 320 240" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M40 199c28-18 50-44 72-80l60-97 30 17-54 102c-17 33-15 58 5 70 19 11 43 2 56-20 15-25 39-34 67-19 23 12 34 27 30 40-5 15-34 13-55 8-18-5-32 1-37 17-8 25-32 39-60 34-29-5-43-22-45-47-2-18-13-23-28-13-20 13-46 21-63 17-15-3-16-18 2-29z"/>
+                    <path d="m173 25 28-45 38 23-30 48"/>
+                    <path d="m192 4 28 17M73 190l75-115M92 202l79-119M112 213l81-124"/>
+                    <circle cx="190" cy="171" r="10"/><circle cx="213" cy="190" r="7"/>
+                  </svg>
+                </div>
+                <div class="performance-copy"><strong>Groove e pulsação</strong><span>Peso, ritmo e linhas que fazem a música se movimentar.</span><div class="mini-bars"><b></b><b></b><b></b><b></b><b></b></div></div>
+              </article>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="caminhos">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow">Escolha sem complicação</p><h2>Comece pelo instrumento que realmente quer tocar.</h2></div>
+          <p>Você não precisa comprar um curso genérico. Escolha uma trilha específica ou leve a formação completa para entender como guitarra e baixo trabalham juntos.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="feature-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M7 4v16M7 9h10M17 4v16M4 6h6M14 18h6"/></svg></div>
+            <div><h3>Do absoluto zero</h3><p>Postura, afinação, leitura, ritmo e aplicação explicados com clareza, sem pressupor experiência anterior e sem pular os fundamentos que realmente fazem diferença.</p></div>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M4 5h16v14H4zM8 9h8M8 13h5"/></svg></div>
+            <div><h3>Material feito para estudar</h3><p>Conteúdo organizado em e-books visuais, com diagramas, exemplos comentados, exercícios, revisões e tarefas práticas para você estudar no próprio ritmo.</p></div>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M5 17 9 9l4 4 6-9M5 20h14"/></svg></div>
+            <div><h3>Progresso que dá para perceber</h3><p>Uma sequência progressiva para transformar informação em coordenação, repertório e confiança, sempre com objetivos claros para cada etapa do estudo.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="materiais">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow">Materiais por instrumento</p><h2>Guitarra e baixo pedem focos diferentes.</h2></div>
+          <p>Os cursos compartilham fundamentos musicais, mas cada trilha prioriza as habilidades que mais importam para o instrumento escolhido.</p>
+        </div>
+        <div class="instrument-split">
+          <article class="instrument-card guitar">
+            <span class="number">Para quem escolhe guitarra</span>
+            <h3>Acordes, riffs e expressão nas seis cordas.</h3>
+            <p>Construa uma base para tocar acompanhamentos, entender o braço, ler TAB, praticar power chords, escalas e técnicas essenciais.</p>
+            <div class="instrument-list"><span>Acordes e trocas</span><span>Riffs e power chords</span><span>Palhetada</span><span>Leitura de TAB</span></div>
+          </article>
+          <article class="instrument-card bass">
+            <span class="number">Para quem escolhe baixo</span>
+            <h3>Groove, pulsação e linhas que sustentam a música.</h3>
+            <p>Aprenda a localizar notas, tocar com metrônomo, construir linhas simples, controlar o som e compreender o papel do baixo na banda.</p>
+            <div class="instrument-list"><span>Groove e tempo</span><span>Notas no braço</span><span>Alternância de dedos</span><span>Linhas de baixo</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="comprar">
+      <div class="container shop-wrap">
+        <div class="shop-label">
+          <div><p class="eyebrow">Cantinho de compras</p><h2>Escolha sua trilha.</h2></div>
+          <p>Três produtos independentes, com páginas próprias e conteúdos pensados para diferentes objetivos.</p>
+        </div>
+
+        <div class="product-grid">
+          <article class="product-card featured">
+            <span class="product-tag">Formação completa</span>
+            <h3>Primeiro Som — Guitarra e Baixo</h3>
+            <p>Para quem quer entender os dois instrumentos e construir uma visão mais completa da música.</p>
+            <ul><li>Conteúdo para guitarra e baixo</li><li>Comparações práticas entre os instrumentos</li><li>Base musical mais ampla</li></ul>
+            <div class="product-bottom">
+              <div class="product-price"><strong>R$ 14,90</strong><span>pagamento único</span></div>
+              <a class="button product-link" data-product="unificado" href="#">Ver curso completo</a>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <span class="product-tag alt">Só guitarra</span>
+            <h3>Primeiro Som — Guitarra</h3>
+            <p>Uma trilha direta para aprender acordes, riffs, ritmo, técnicas e começar a tocar suas primeiras músicas.</p>
+            <ul><li>Foco exclusivo em guitarra</li><li>Exercícios para as seis cordas</li><li>Prática de acordes e riffs</li></ul>
+            <div class="product-bottom">
+              <div class="product-price"><strong>R$ 9,90</strong><span>pagamento único</span></div>
+              <a class="button product-link" data-product="guitarra" href="#">Conhecer curso de guitarra</a>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <span class="product-tag alt">Só baixo</span>
+            <h3>Primeiro Som — Baixo</h3>
+            <p>Uma formação focada em ritmo, groove, localização das notas e construção das primeiras linhas de baixo.</p>
+            <ul><li>Foco exclusivo em baixo</li><li>Coordenação e pulsação</li><li>Linhas e grooves iniciais</li></ul>
+            <div class="product-bottom">
+              <div class="product-price"><strong>R$ 9,90</strong><span>pagamento único</span></div>
+              <a class="button product-link" data-product="baixo" href="#">Conhecer curso de baixo</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="release-note" id="garantia">
+          <span class="release-icon"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <div>
+            <h3>Primeira semana pensada para você avaliar com calma</h3>
+            <p>Após a compra pela Cakto, <strong>uma parte inicial do curso ficará disponível durante os primeiros 7 dias</strong>, com material suficiente para estudo e avaliação, contendo no mínimo cerca de 20 páginas. Assim, você poderá conhecer a proposta, estudar o conteúdo liberado e decidir com segurança se deseja continuar ou solicitar a devolução dentro do prazo aplicável.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+</main>
+
+  <footer>
+    <div class="container footer-row">
+      <div><strong>Primeiro Som</strong><br>Guitarra e baixo para iniciantes.</div>
+      <div>© <span id="year"></span> Todos os direitos reservados.<br>Resultados dependem da prática e dedicação de cada aluno.</div>
+    </div>
+  </footer>
+
+
+
+  <script>
+    const CONFIG = {
+      pages: {
+        unificado: "#",
+        guitarra: "#",
+        baixo: "#"
+      }
+    };
+
+    document.querySelectorAll(".product-link").forEach(link => {
+      const product = link.dataset.product;
+      link.href = CONFIG.pages[product] || "#";
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
