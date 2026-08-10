@@ -14,6 +14,61 @@
 @media(max-width:900px){.hero-grid,.section-head,.learn,.offer-grid{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.offer-side{min-width:0}}
 @media(max-width:620px){.nav .btn{display:none}.hero{padding-top:28px}.hero-copy,.visual{min-height:auto}.hero-copy{padding:26px}h1{font-size:clamp(44px,13vw,62px)}.visual-inner{min-height:460px;padding:18px}.section{padding:72px 0}.learn-list{grid-template-columns:1fr}.release{grid-template-columns:1fr}.foot{display:block}.foot>div+div{margin-top:15px}}
 </style>
+
+<style id="mobile-landing-fix">
+/* Mobile landing-page refinements */
+html,body{max-width:100%;overflow-x:hidden}
+img,svg,video,canvas,iframe{max-width:100%;height:auto}
+@media (max-width: 768px){
+  body{overflow-x:hidden}
+  .wrap,.container{width:min(calc(100% - 24px),100%)!important;margin-left:auto!important;margin-right:auto!important}
+  .hero,.section{overflow:hidden}
+  .hero-actions,.actions{display:grid!important;grid-template-columns:1fr!important;gap:10px!important}
+  .hero-actions .btn,.hero-actions .button,.actions .btn,.actions .button{width:100%!important;max-width:none!important}
+  .offer,.console,.poster,.performance-stage,.product-card,.instrument-card,.groove-card,.step,.tab-card,.skills,.release{max-width:100%!important}
+  pre{max-width:100%;overflow:auto;-webkit-overflow-scrolling:touch}
+}
+@media (max-width: 480px){
+  .wrap,.container{width:min(calc(100% - 20px),100%)!important}
+  .nav{min-height:64px!important;height:auto!important;padding:10px 0!important}
+  .brand{font-size:16px!important;min-width:0}
+  .hero{padding-top:18px!important;padding-bottom:48px!important}
+  .section{padding-top:58px!important;padding-bottom:58px!important}
+  .hero-copy{padding:22px!important}
+  .section-head{gap:18px!important;margin-bottom:26px!important}
+  .offer{padding:22px!important}
+  .release{padding:20px!important}
+}
+</style>
+<style id="mobile-unified-fix">
+@media(max-width:768px){
+  .hero-grid,.section-head,.learn,.offer-grid,.cards,.learn-list{grid-template-columns:1fr!important}
+  .hero-copy,.visual{min-height:auto!important}
+  .visual-inner{min-height:380px!important;padding:18px!important}
+  .hero h1,h1{font-size:clamp(42px,13vw,64px)!important}
+  .offer-side{min-width:0!important;width:100%!important}
+}
+@media(max-width:480px){
+  .visual-inner{min-height:330px!important}
+  .cards{gap:12px!important}
+}
+</style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1561517235697373');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1561517235697373&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 </head>
 <body>
 <header class="header"><div class="wrap nav"><a class="brand" href="#inicio"><span class="bolt"><svg viewBox="0 0 24 24"><path d="m13 2-8 12h6l-1 8 9-13h-6z"/></svg></span>Primeiro Som</a><a class="btn checkout" href="https://pay.cakto.com.br/3emrzhm_994579" target="_blank" rel="noopener noreferrer">Comprar por R$ 14,90</a></div></header>
