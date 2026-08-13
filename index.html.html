@@ -63,11 +63,11 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1561517235697373');
+fbq('init', '1059405196463271');
 fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1561517235697373&ev=PageView&noscript=1"
+src="https://www.facebook.com/tr?id=1059405196463271&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 </head>
@@ -84,5 +84,15 @@ src="https://www.facebook.com/tr?id=1561517235697373&ev=PageView&noscript=1"
 <section class="section" id="comprar"><div class="wrap"><div class="offer"><div class="offer-grid"><div><p class="eyebrow">Acesso ao curso</p><h2>Primeiro Som — Guitarra e Baixo</h2><p>Uma formação conjunta para aprender guitarra e baixo, compreender como os dois instrumentos se conectam e construir uma base musical mais ampla.</p></div><div class="offer-side"><div class="price">R$ 14,90 <small>pagamento único</small></div><a class="btn checkout" href="https://pay.cakto.com.br/3emrzhm_994579" target="_blank" rel="noopener noreferrer">Comprar agora</a></div></div><div class="release"><div class="ico">7D</div><div><h3>Primeira semana para conhecer o curso com calma</h3><p>Após a compra pela Cakto, uma parte inicial do conteúdo ficará disponível durante os primeiros 7 dias, com no mínimo cerca de 20 páginas. Assim, você poderá estudar o material liberado, avaliar a proposta e decidir com segurança se deseja continuar ou solicitar a devolução dentro do prazo aplicável.</p></div></div></div></div></section>
 </main>
 <footer><div class="wrap foot"><div><strong>Primeiro Som</strong><br>Primeiro Som — Guitarra e Baixo</div><div>© <span id="year"></span> Todos os direitos reservados.<br>Resultados dependem da prática e dedicação de cada aluno.</div></div></footer>
-<script>const CHECKOUT_URL="https://pay.cakto.com.br/3emrzhm_994579";document.querySelectorAll('.checkout').forEach(a=>a.href=CHECKOUT_URL);document.getElementById('year').textContent=new Date().getFullYear();</script>
+<script>
+  const CHECKOUT_URL = "https://pay.cakto.com.br/3emrzhm_994579";
+  fbq('track', 'ViewContent', { content_name: 'Primeiro Som — Guitarra e Baixo', content_type: 'product', value: 14.90, currency: 'BRL' });
+  document.querySelectorAll('.checkout').forEach(a => {
+    a.href = CHECKOUT_URL;
+    a.addEventListener('click', () => {
+      fbq('track', 'InitiateCheckout', { content_name: 'Primeiro Som — Guitarra e Baixo', value: 14.90, currency: 'BRL' });
+    });
+  });
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 </body></html>
